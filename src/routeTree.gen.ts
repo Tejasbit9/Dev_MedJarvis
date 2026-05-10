@@ -9,13 +9,55 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VitalsRouteImport } from './routes/vitals'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as PrescriptionsRouteImport } from './routes/prescriptions'
+import { Route as PatientsRouteImport } from './routes/patients'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as IntelligenceRouteImport } from './routes/intelligence'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as DrugCheckerRouteImport } from './routes/drug-checker'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VitalsRoute = VitalsRouteImport.update({
+  id: '/vitals',
+  path: '/vitals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrescriptionsRoute = PrescriptionsRouteImport.update({
+  id: '/prescriptions',
+  path: '/prescriptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatientsRoute = PatientsRouteImport.update({
+  id: '/patients',
+  path: '/patients',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceRoute = IntelligenceRouteImport.update({
+  id: '/intelligence',
+  path: '/intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DrugCheckerRoute = DrugCheckerRouteImport.update({
+  id: '/drug-checker',
+  path: '/drug-checker',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -32,40 +74,148 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/drug-checker': typeof DrugCheckerRoute
+  '/emergency': typeof EmergencyRoute
+  '/intelligence': typeof IntelligenceRoute
   '/login': typeof LoginRoute
+  '/patients': typeof PatientsRoute
+  '/prescriptions': typeof PrescriptionsRoute
+  '/settings': typeof SettingsRoute
+  '/vitals': typeof VitalsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/drug-checker': typeof DrugCheckerRoute
+  '/emergency': typeof EmergencyRoute
+  '/intelligence': typeof IntelligenceRoute
   '/login': typeof LoginRoute
+  '/patients': typeof PatientsRoute
+  '/prescriptions': typeof PrescriptionsRoute
+  '/settings': typeof SettingsRoute
+  '/vitals': typeof VitalsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/drug-checker': typeof DrugCheckerRoute
+  '/emergency': typeof EmergencyRoute
+  '/intelligence': typeof IntelligenceRoute
   '/login': typeof LoginRoute
+  '/patients': typeof PatientsRoute
+  '/prescriptions': typeof PrescriptionsRoute
+  '/settings': typeof SettingsRoute
+  '/vitals': typeof VitalsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/drug-checker'
+    | '/emergency'
+    | '/intelligence'
+    | '/login'
+    | '/patients'
+    | '/prescriptions'
+    | '/settings'
+    | '/vitals'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login'
-  id: '__root__' | '/' | '/dashboard' | '/login'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/drug-checker'
+    | '/emergency'
+    | '/intelligence'
+    | '/login'
+    | '/patients'
+    | '/prescriptions'
+    | '/settings'
+    | '/vitals'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/drug-checker'
+    | '/emergency'
+    | '/intelligence'
+    | '/login'
+    | '/patients'
+    | '/prescriptions'
+    | '/settings'
+    | '/vitals'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
+  DrugCheckerRoute: typeof DrugCheckerRoute
+  EmergencyRoute: typeof EmergencyRoute
+  IntelligenceRoute: typeof IntelligenceRoute
   LoginRoute: typeof LoginRoute
+  PatientsRoute: typeof PatientsRoute
+  PrescriptionsRoute: typeof PrescriptionsRoute
+  SettingsRoute: typeof SettingsRoute
+  VitalsRoute: typeof VitalsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vitals': {
+      id: '/vitals'
+      path: '/vitals'
+      fullPath: '/vitals'
+      preLoaderRoute: typeof VitalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prescriptions': {
+      id: '/prescriptions'
+      path: '/prescriptions'
+      fullPath: '/prescriptions'
+      preLoaderRoute: typeof PrescriptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patients': {
+      id: '/patients'
+      path: '/patients'
+      fullPath: '/patients'
+      preLoaderRoute: typeof PatientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence': {
+      id: '/intelligence'
+      path: '/intelligence'
+      fullPath: '/intelligence'
+      preLoaderRoute: typeof IntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drug-checker': {
+      id: '/drug-checker'
+      path: '/drug-checker'
+      fullPath: '/drug-checker'
+      preLoaderRoute: typeof DrugCheckerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -88,7 +238,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
+  DrugCheckerRoute: DrugCheckerRoute,
+  EmergencyRoute: EmergencyRoute,
+  IntelligenceRoute: IntelligenceRoute,
   LoginRoute: LoginRoute,
+  PatientsRoute: PatientsRoute,
+  PrescriptionsRoute: PrescriptionsRoute,
+  SettingsRoute: SettingsRoute,
+  VitalsRoute: VitalsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
